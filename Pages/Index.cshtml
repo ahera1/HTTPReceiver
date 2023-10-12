@@ -1,0 +1,52 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <h2>Status</h2>
+    <div>Method: @Request.Method</div>
+    <div>ContentType: @Request.ContentType</div>
+
+    <h2>Headers</h2>
+    <table>
+        @foreach (string key in Request.Headers.Keys)
+        {
+            <tr>
+                <th>@key</th>
+                <td>@Request.Headers[key]</td>
+            </tr>
+        }
+    </table>
+
+    <h2>Query</h2>
+    <table>
+    @foreach(string key in Request.Query.Keys)
+    {
+        <tr>
+            <th>@key</th>
+            <td>@Request.Query[key]</td>
+        </tr>
+    }
+    </table>
+
+    <h2>Form</h2>
+    <table>
+       @if(Request.Method == "POST")
+        {
+            @foreach (string key in Request.Form.Keys)
+            {
+                <tr>
+                    <th>@key</th>
+                    <td>@Request.Form[key]</td>
+                </tr>
+            }
+        }
+    </table>
+
+
+</div>
