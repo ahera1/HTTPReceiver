@@ -1,7 +1,14 @@
+using NLog;
+using NLog.Web;
+
+var logger = LogManager.Setup().LoadConfigurationFromXml("NLog.config").GetCurrentClassLogger();
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
+//builder.Logging.AddConsole();
+builder.Host.UseNLog();
+
 
 builder.Services.AddHttpLogging(options =>
 {

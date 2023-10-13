@@ -16,3 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+table {
+    border-collapse: collapse;
+}
+
+th,td {
+    border: 1px solid;
+}
